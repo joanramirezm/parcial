@@ -6,18 +6,18 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Surge.sh
+      - name: Install Surge
         run: npm install -g surge
 
-      - name: Deploy to Surge.sh
+      - name: Deploy to Surge
+        run: surge --project ./path/to/your/project --domain joan_montilla.surge.sh
         env:
           SURGE_LOGIN: ${{ secrets.SURGE_LOGIN }}
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
-        run: surge --project ./ --domain joan_ramirez.surge.sh
